@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Product</title>
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    .box {
+      background: white;
+      padding: 30px;
+      width: 350px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    button {
+      background-color: #0275d8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #025aa5;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Add Chemical Product</h2>
+
+  <form method="POST" action="/add-product">
+    <input name="name" placeholder="Product Name" required />
+    <input name="cas" placeholder="CAS Number" required />
+
+    <select name="unit" required>
+      <option value="">Select Unit</option>
+      <option value="KG">KG</option>
+      <option value="MT">MT</option>
+      <option value="Litre">Litre</option>
+    </select>
+
+    <button>Add Product</button>
+  </form>
+</div>
+
+</body>
+</html>

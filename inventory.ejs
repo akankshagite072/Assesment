@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inventory</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .top-action {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+    }
+
+    .add-btn {
+      padding: 10px 20px;
+      background-color: #0275d8;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    form input {
+      width: 80px;
+      padding: 5px;
+    }
+
+    form button {
+      padding: 5px 10px;
+      margin: 2px;
+    }
+
+    .logout {
+      display: flex;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .logout-btn {
+      padding: 10px 25px;
+      background-color: #d9534f;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .logout-btn:hover {
+      background-color: #c9302c;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Simple Inventory Management System</h2>
+
+<div class="top-action">
+  <a href="/add-product" class="add-btn">➕ Add Product</a>
+</div>
+
+<table>
+  <tr>
+    <th>Product Name</th>
+    <th>Current Stock</th>
+    <th>Unit</th>
+    <th>Update Stock</th>
+  </tr>
+
+  <% inventory.forEach(item => { %>
+  <% if (item.Product) { %>
+    <tr>
+      <td><%= item.Product.name %></td>
+      <td><%= item.quantity %></td>
+      <td><%= item.Product.unit %></td>
+      <td>
+        <form action="/update-stock/<%= item.id %>" method="POST">
+          <input type="number" step="0.01" name="amount" required>
+          <button name="action" value="IN">IN</button>
+          <button name="action" value="OUT">OUT</button>
+        </form>
+      </td>
+    </tr>
+  <% } %>
+<% }) %>
+
+
+</table>
+
+<div class="logout">
+  <a href="/logout" class="logout-btn">🚪 Logout</a>
+</div>
+
+</body>
+</html>
